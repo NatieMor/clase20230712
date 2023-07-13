@@ -1,0 +1,26 @@
+<div id="<%= dom_id order %>">
+<hr></hr>
+  <p>
+    <strong> numero de orden:</strong>
+    <%= order.id %>
+
+    <br></br>
+
+    <strong> Monto:</strong>
+    <%= order.monto %>
+    <!--<%= order.contidad %>-->
+    <br></br>
+
+    <% order.products.each do |product| %>
+      <p>
+      <strong> Producto:</strong>
+        <%= product.name %>
+        <strong> Precio:</strong>
+        <%= product.price %>
+      </p>
+    <% end %>
+  
+  </p>
+
+
+</div>

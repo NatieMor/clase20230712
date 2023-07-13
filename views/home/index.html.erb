@@ -1,0 +1,6 @@
+<h1>Welcome <%= current_user.nombre%></h1>
+<p>
+  <%if current_user.telefono%>
+    Tu teléfono es <%= current_user.telefono%>
+  <% end %>
+</p>

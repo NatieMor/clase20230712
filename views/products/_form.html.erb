@@ -1,0 +1,39 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.number_field :price %>
+  </div>
+  <div>
+    <%= form.label :size, style: "display: block" %>
+    <%= form.number_field :size %>
+  </div>
+  <!--<div>
+    <label for="product_category_id">Seleccione una categoría:</label>
+    <select name="product[category_ids]" id="product_category_id" multiple>
+      <% @categories.each do |category| %>
+        <option value="<%= category.id %>"> <%= category.id %> - <%= category.name %> </option>
+      <% end %>
+    </select>
+  </div>-->
+  <div>
+    <%= form.label :category_ids %><br />
+    <%= form.collection_select :category_ids, Category.all, :id, :name,{selected: product.category_ids, include_blank: false}, {:multiple => true, size: Category.all.count } %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
